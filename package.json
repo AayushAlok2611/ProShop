@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/AayushAlok2611/ProShop#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "concurrently": "^6.2.0",
     "dotenv": "^10.0.0",
