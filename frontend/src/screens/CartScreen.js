@@ -2,7 +2,7 @@ import React,{useEffect} from 'react'
 import { Col, Image, ListGroup, ListGroupItem, Row ,Form,Button, Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
-import { addToCart } from '../actions/cartActions';
+import { addToCart, removeFromCart } from '../actions/cartActions';
 import Message from '../components/Message';
 
 const CartScreen = ({match,location,history}) => {
@@ -19,12 +19,12 @@ const CartScreen = ({match,location,history}) => {
     },[dispatch,productId,qty]);
 
     const removeFromCartHandler = (prodId)=>{
-
+        dispatch(removeFromCart(prodId));
     }
 
     const checkoutHandler = ()=>{
         history.push('/login?redirect=shipping'); // on checking out if user not logged in the head to login page else if user logged in then head to shipping page
-        
+
     }
 
     return (
@@ -32,7 +32,7 @@ const CartScreen = ({match,location,history}) => {
             <Col md={8}>
                 <h1>Shopping Cart</h1>
                 {   
-                    cartItems.length==0 ? <Message>Your cart is empty <Link to='/'>Go back</Link> </Message>:
+                    cartItems.length===0 ? <Message>Your cart is empty <Link to='/'>Go back</Link> </Message>:
                     (
                         <ListGroup variant='flush'>
                             {cartItems.map((item) => (
