@@ -16,7 +16,7 @@ app.use(express.json());
 //Connect to Mongo DB
 connectDB();
 
-//Moutning routes
+//Mounting routes
 app.use('/api/products',productRoutes);
 app.use('/api/users',userRoutes);
 
