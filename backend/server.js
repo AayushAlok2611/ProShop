@@ -5,15 +5,21 @@ import connectDB from './config/db.js';
 import colors from 'colors';
 import productRoutes from './routes/productRoutes.js';
 import {errorHandler,notFound} from './middleware/errorMiddleware.js';
+import userRoutes from './routes/userRoutes.js';
+
 
 dotenv.config();
 const app = express();
+
+app.use(express.json());
 
 //Connect to Mongo DB
 connectDB();
 
 //Moutning routes
 app.use('/api/products',productRoutes);
+app.use('/api/users',userRoutes);
+
 
 app.get('/',(req,res)=>{
     res.send('API is running');
