@@ -4,12 +4,8 @@ import {
     PRODUCT_LIST_SUCCESS
 } from '../constants/productConstants'
 
-const initialState = {
-    products:[],
-    loading:false
-}
 
-export const productListReducer = (state=initialState,action)=>{
+export const productListReducer = (state={products:[]},action)=>{
     const {payload,type} = action;
     switch (type) {
         case PRODUCT_LIST_REQUEST:
